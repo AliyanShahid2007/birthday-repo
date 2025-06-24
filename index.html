@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday My Love</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #ffe6e6, #ffb3b3);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      position: relative;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4em;
+      color: #ff3366;
+      margin-bottom: 0.2em;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.4em;
+      color: #fff;
+      animation: fadeInUp 2s ease-in;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 32px;
+      font-size: 1.2em;
+      background: #ff3366;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeInUp 2.5s ease;
+    }
+
+    button:hover {
+      background: #cc2952;
+      transform: scale(1.05);
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 6s infinite ease-in;
+      opacity: 0.7;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Birthday, My Love ❤️</h1>
+  <p>You are the light of my life, the beat of my heart, and the reason I smile every day. May your birthday be as beautiful and amazing as you are! 💕</p>
+  <button onclick="startHearts()">Click to Celebrate 🎉</button>
+
+  <!-- Optional: Add background music (uncomment below if you want) -->
+  <!-- <audio id="bgMusic" src="your-audio-file.mp3" autoplay loop hidden></audio> -->
+
+  <script>
+    function startHearts() {
+      for (let i = 0; i < 100; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+        heart.style.background = getRandomColor();
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+      }
+
+      alert("Happy Birthday again, my queen! 💖 I love you forever.");
+    }
+
+    function getRandomColor() {
+      const colors = ["#ff4d4d", "#ff6699", "#ff66cc", "#ff5050", "#ff1a75"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
