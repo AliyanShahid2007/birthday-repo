@@ -3,169 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday My Love</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Happy Birthday Konuuuu 🎂</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at top, #ffe6e6, #ffb3b3);
       font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #ffc0cb, #ffe4e1);
       overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      position: relative;
-      color: #fff;
-      text-align: center;
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.5em;
-      color: #ff3366;
-      margin-bottom: 0.5em;
-      animation: fadeInDown 1.5s ease-out;
+      font-size: 5.5vw;
     }
 
-    p {
-      font-size: 1.2em;
-      color: #000;
-      animation: fadeInUp 2s ease-in;
-    }
-
-    button {
-      margin-top: 30px;
-      padding: 14px 32px;
-      font-size: 1.2em;
-      background: #ff3366;
-      color: #fff;
-      border: none;
-      border-radius: 30px;
+    .gift-box {
+      width: 30vw;
+      height: 30vw;
+      max-width: 160px;
+      max-height: 160px;
+      background: #ff69b4;
+      border-radius: 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      animation: fadeInUp 2.5s ease;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+      animation: pulse 2s infinite;
+      margin: 30px auto;
     }
 
-    button:hover {
-      background: #cc2952;
-      transform: scale(1.05);
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
-    .heart {
+    .teddy {
+      display: none;
+      width: 70vw;
+      max-width: 250px;
+      margin: auto;
+     
+    }
+
+    .message,
+    .birthday-text {
+      display: none;
+      color: #880e4f;
+      font-size: 3.8vw;
+      margin-top: 20px;
+      padding: 16px;
+      background: #fff0f5;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff80ab;
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
+
+    .balloons,
+    .fireworks {
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background: red;
-      transform: rotate(45deg);
-      animation: floatUp 6s infinite ease-in;
-      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
     }
 
-    .heart::before, .heart::after {
-      content: "";
+    .balloon {
       position: absolute;
-      width: 15px;
-      height: 15px;
+      bottom: -100px;
+      width: 8vw;
+      height: 12vw;
+      max-width: 40px;
+      max-height: 60px;
       background: red;
       border-radius: 50%;
+      animation: rise 6s infinite;
     }
 
-    .heart::before {
-      top: -7.5px;
-      left: 0;
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
     }
 
-    .heart::after {
-      left: -7.5px;
-      top: 0;
+    canvas {
+      display: block;
     }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-800px) rotate(45deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
       h1 {
-        font-size: 2.5em;
+        font-size: 2.2rem;
       }
 
-      p {
-        font-size: 1em;
-      }
-
-      button {
-        font-size: 1em;
-        padding: 10px 24px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      p {
-        font-size: 0.9em;
-      }
-
-      button {
-        font-size: 0.9em;
-        padding: 8px 20px;
+      .birthday-text {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 20px auto;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container text-center px-3">
-    <h1>Just 7-Days Left in my girl's Day<br>Happy Birthday, My Love ❤️</h1>
-    <p>You are the light of my life, the beat of my heart, and the reason I smile every day.<br>May your birthday be as beautiful and amazing as you are! 💕</p>
-    <button onclick="startHearts()">Let's Celebrate 🎉</button>
+  <div class="container text-center py-4">
+    <h1>🎉 Click the Gift Box 🎁</h1>
+    <div class="gift-box" onclick="startSurprise()"></div>
+
+    <img src="Images/bubu.jpg" alt="Teddy" class="teddy img-fluid" id="teddy">
+    <div class="message fw-semibold" id="msg">Happy Birthdayyy Konuuuu in Advance 🎂💕💋😘</div>
+
+    <div class="birthday-text text-start text-md-center" id="birthdayText">
+      Meraaa bachaa, merii jann, merii motoo, merii bivii begummmg, merii chuziiii, jan e aliyan, dunya e aliyan...
+      <br><br>
+      Aaj se kuch din baad, meri pyariii shii hoor 16 ki ho jayegi par phr bhi meree liyee chota shaa para shaa mashoom shaa 5 shaal k bachaa  raehga🥹❤️...
+      <br><br>
+      Happy 16th Birthday in Advance to the love of my life 🎂🎉🥳🎁.
+    </div>
+  </div>
+
+  <div class="balloons" id="balloons"></div>
+  <div class="fireworks" id="fireworks">
+    <canvas id="canvas"></canvas>
   </div>
 
   <script>
-    function startHearts() {
-      for (let i = 0; i < 100; i++) {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
-        heart.style.background = getRandomColor();
-        document.body.appendChild(heart);
+    function startSurprise() {
+      document.getElementById("teddy").style.display = "block";
+      document.getElementById("msg").style.display = "block";
 
-        setTimeout(() => heart.remove(), 6000);
+      setTimeout(() => {
+        document.getElementById("teddy").style.display = "none";
+        document.getElementById("msg").style.display = "none";
+        document.getElementById("birthdayText").style.display = "block";
+        showBalloons();
+        startFireworks();
+      }, 4000);
+    }
+
+    function showBalloons() {
+      const container = document.getElementById("balloons");
+      for (let i = 0; i < 30; i++) {
+        const balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * 100 + "%";
+        balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        container.appendChild(balloon);
+      }
+    }
+
+    function startFireworks() {
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      function Firework() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height;
+        this.radius = 2;
+        this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        this.velocity = { x: Math.random() * 2 - 1, y: -Math.random() * 8 - 4 };
+        this.alpha = 1;
       }
 
-      alert("Happy Birthday in advanced, my queen! 💖 I love you shoooo muchhh meraa bachaaa😁❤💕.");
-    }
+      Firework.prototype.update = function () {
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.alpha -= 0.01;
+      };
 
-    function getRandomColor() {
-      const colors = ["#ff4d4d", "#ff6699", "#ff66cc", "#ff5050", "#ff1a75"];
-      return colors[Math.floor(Math.random() * colors.length)];
+      Firework.prototype.draw = function () {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      };
+
+      const fireworks = [];
+      const startTime = Date.now();
+      const fireworkDuration = 5000;
+
+      function animate() {
+        const elapsed = Date.now() - startTime;
+        if (elapsed > fireworkDuration) {
+          document.getElementById("fireworks").style.display = "none";
+          return;
+        }
+
+        requestAnimationFrame(animate);
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (Math.random() < 0.05) {
+          for (let i = 0; i < 20; i++) {
+            fireworks.push(new Firework());
+          }
+        }
+
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+          fireworks[i].update();
+          fireworks[i].draw();
+          if (fireworks[i].alpha <= 0) fireworks.splice(i, 1);
+        }
+      }
+
+      animate();
     }
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
