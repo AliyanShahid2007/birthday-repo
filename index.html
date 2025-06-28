@@ -18,6 +18,14 @@
 
     h1 {
       font-size: 5.5vw;
+      text-shadow: 0 0 10px #ff69b4;
+      color: #ff1493;
+      animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #ff69b4; }
+      to { text-shadow: 0 0 25px #ff1493; }
     }
 
     .gift-box {
@@ -43,7 +51,12 @@
       width: 70vw;
       max-width: 250px;
       margin: auto;
-     
+      animation: teddyBounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes teddyBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     .message,
@@ -57,17 +70,19 @@
       border-radius: 15px;
       box-shadow: 0 0 20px #ff80ab;
       line-height: 1.6;
-      word-wrap: break-word;
     }
 
     .balloons,
-    .fireworks {
+    .fireworks,
+    .hearts,
+    .confetti {
       position: absolute;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
       pointer-events: none;
+      overflow: hidden;
     }
 
     .balloon {
@@ -85,6 +100,34 @@
     @keyframes rise {
       0% { transform: translateY(0); opacity: 1; }
       100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    .heart {
+      width: 15px;
+      height: 15px;
+      background: pink;
+      position: absolute;
+      top: 100%;
+      animation: floatHearts 5s linear infinite;
+      clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 75%, 18% 100%, 0% 35%);
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .confetti-piece {
+      width: 10px;
+      height: 10px;
+      background-color: gold;
+      position: absolute;
+      animation: confettiFall 4s infinite;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-100px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
     }
 
     canvas {
@@ -125,6 +168,8 @@
   <div class="fireworks" id="fireworks">
     <canvas id="canvas"></canvas>
   </div>
+  <div class="hearts" id="hearts"></div>
+  <div class="confetti" id="confetti"></div>
 
   <script>
     function startSurprise() {
@@ -136,6 +181,8 @@
         document.getElementById("msg").style.display = "none";
         document.getElementById("birthdayText").style.display = "block";
         showBalloons();
+        showHearts();
+        showConfetti();
         startFireworks();
       }, 4000);
     }
@@ -148,6 +195,28 @@
         balloon.style.left = Math.random() * 100 + "%";
         balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
         container.appendChild(balloon);
+      }
+    }
+
+    function showHearts() {
+      const container = document.getElementById("hearts");
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "%";
+        container.appendChild(heart);
+      }
+    }
+
+    function showConfetti() {
+      const container = document.getElementById("confetti");
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti-piece");
+        confetti.style.left = Math.random() * 100 + "%";
+        confetti.style.top = Math.random() * -100 + "px";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        container.appendChild(confetti);
       }
     }
 
@@ -215,3 +284,4 @@
   </script>
 </body>
 </html>
+
